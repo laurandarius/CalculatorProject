@@ -1,11 +1,6 @@
 import React, { Component } from "react";
 import Display from "./Display";
-import "./App.css";
 
-const App = () => (
-  <div className="app">
-    <Display />
-  </div>
-);
+const App = () => "Hello World";
 
 export default App;
