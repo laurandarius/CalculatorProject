@@ -8,6 +8,7 @@ const CalculatorLayout = styled.div`
   height: 319px;
   margin: 40px 0px 0px 40px;
   border-radius: 9px 9px 9px 9px;
+  box-shadow: 5px 20px 40px 1px #888888;
 `;
 
 const Calculator = () => (
