@@ -1,13 +1,9 @@
 import React, { useState } from "react";
 
-const Display = () => {
-  const [result, setResult] = useState(0);
-
-  return (
-    <div className="display">
-      <div className="display_content">{result}</div>
-    </div>
-  );
-};
+const Display = props => (
+  <div>
+    <p>{props.result}</p>
+  </div>
+);
 
 export default Display;
