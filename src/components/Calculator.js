@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React, { useState } from "react";
 import Display from "./Display";
 import Button from "./Button";
 import styled from "styled-components";
@@ -11,29 +11,38 @@ const CalculatorLayout = styled.div`
   box-shadow: 5px 20px 40px 1px #888888;
 `;
 
-const Calculator = () => (
-  <CalculatorLayout>
-    <Display result={0} />
-    <Button value={"C"} position={"left"} />
-    <Button value={"±"} position={"left"} />
-    <Button value={"%"} position={"left"} />
-    <Button value={"÷"} position={"right"} />
-    <Button value={"7"} position={"left"} />
-    <Button value={"8"} position={"left"} />
-    <Button value={"9"} position={"left"} />
-    <Button value={"×"} position={"right"} />
-    <Button value={"4"} position={"left"} />
-    <Button value={"5"} position={"left"} />
-    <Button value={"6"} position={"left"} />
-    <Button value={"-"} position={"right"} />
-    <Button value={"1"} position={"left"} />
-    <Button value={"2"} position={"left"} />
-    <Button value={"3"} position={"left"} />
-    <Button value={"+"} position={"right"} />
-    <Button value={"0"} cellSize={"2"} position={"left"} />
-    <Button value={","} position={"left"} />
-    <Button value={"="} position={"right"} />
-  </CalculatorLayout>
-);
+const Calculator = () => {
+  const [result, setResult] = useState(0);
+
+  const onClick = value => {
+    if (Array.from(Array(10), (x, i) => i).includes(Number(value)))
+      setResult(value);
+  };
+
+  return (
+    <CalculatorLayout>
+      <Display result={result} />
+      <Button value={"C"} position={"left"} onClick={onClick} />
+      <Button value={"±"} position={"left"} onClick={onClick} />
+      <Button value={"%"} position={"left"} onClick={onClick} />
+      <Button value={"÷"} position={"right"} onClick={onClick} />
+      <Button value={"7"} position={"left"} onClick={onClick} />
+      <Button value={"8"} position={"left"} onClick={onClick} />
+      <Button value={"9"} position={"left"} onClick={onClick} />
+      <Button value={"×"} position={"right"} onClick={onClick} />
+      <Button value={"4"} position={"left"} onClick={onClick} />
+      <Button value={"5"} position={"left"} onClick={onClick} />
+      <Button value={"6"} position={"left"} onClick={onClick} />
+      <Button value={"-"} position={"right"} onClick={onClick} />
+      <Button value={"1"} position={"left"} onClick={onClick} />
+      <Button value={"2"} position={"left"} onClick={onClick} />
+      <Button value={"3"} position={"left"} onClick={onClick} />
+      <Button value={"+"} position={"right"} onClick={onClick} />
+      <Button value={"0"} cellSize={"2"} position={"left"} onClick={onClick} />
+      <Button value={","} position={"left"} onClick={onClick} />
+      <Button value={"="} position={"right"} onClick={onClick} />
+    </CalculatorLayout>
+  );
+};
 
 export default Calculator;

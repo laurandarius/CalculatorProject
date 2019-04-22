@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import styled from "styled-components";
 
 const DisplayLayout = styled.div`
@@ -18,7 +18,7 @@ const DisplayContent = styled.div`
 
 const Display = props => (
   <DisplayLayout>
-    <DisplayContent>{props.result}</DisplayContent>
+    <DisplayContent> {props.result} </DisplayContent>{" "}
   </DisplayLayout>
 );
 

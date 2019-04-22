@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import styled from "styled-components";
 
 const styles = {
@@ -27,6 +27,7 @@ const Button = props => (
     backgroundColor={styles[props.position]["backgroundColor"]}
     cellSize={sizes[Number(props.cellSize) - 1 || 0]}
     color={styles[props.position]["color"]}
+    onClick={() => props.onClick(props.value)}
   >
     {props.value}
   </ButtonLayout>
