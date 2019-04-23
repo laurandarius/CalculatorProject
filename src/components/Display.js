@@ -8,6 +8,7 @@ const DisplayLayout = styled.div`
   font-size: 55px;
   color: white;
   position: relative;
+  overflow: hidden;
 `;
 
 const DisplayContent = styled.div`
@@ -18,7 +19,7 @@ const DisplayContent = styled.div`
 
 const Display = props => (
   <DisplayLayout>
-    <DisplayContent> {props.result} </DisplayContent>{" "}
+    <DisplayContent> {props.result} </DisplayContent>
   </DisplayLayout>
 );
 
