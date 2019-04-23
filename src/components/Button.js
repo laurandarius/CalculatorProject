@@ -1,21 +1,13 @@
-import React, { useState } from "react";
+import React from "react";
 import styled from "styled-components";
 
-const styles = {
-  right: {
-    backgroundColor: "orange",
-    color: "white"
-  },
-  left: {
-    backgroundColor: "gainsboro",
-    color: "black"
-  }
+const sizes = {
+  small: "58.2px",
+  large: "116.6px"
 };
 
-const sizes = ["58.2px", "116.6px"];
-
 const ButtonLayout = styled.button`
-  width: ${props => props.cellSize};
+  width: ${props => props.size};
   height: 47.5px;
   background-color: ${props => props.backgroundColor};
   font-size: 22px;
@@ -24,11 +16,11 @@ const ButtonLayout = styled.button`
 
 const Button = props => (
   <ButtonLayout
-    backgroundColor={styles[props.position]["backgroundColor"]}
-    cellSize={sizes[Number(props.cellSize) - 1 || 0]}
-    color={styles[props.position]["color"]}
+    backgroundColor={props.backgroundColor}
+    size={sizes[props.size ? "large" : "small"]}
+    color={props.color}
   >
-    {props.value}
+    {props.children}
   </ButtonLayout>
 );
 

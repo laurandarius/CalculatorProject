@@ -1,5 +1,4 @@
-import React, { Component } from "react";
-import Display from "./Display";
+import React from "react";
 import Button from "./Button";
 import styled from "styled-components";
 
@@ -13,26 +12,63 @@ const CalculatorLayout = styled.div`
 
 const Calculator = () => (
   <CalculatorLayout>
-    <Display result={0} />
-    <Button value={"C"} position={"left"} />
-    <Button value={"±"} position={"left"} />
-    <Button value={"%"} position={"left"} />
-    <Button value={"÷"} position={"right"} />
-    <Button value={"7"} position={"left"} />
-    <Button value={"8"} position={"left"} />
-    <Button value={"9"} position={"left"} />
-    <Button value={"×"} position={"right"} />
-    <Button value={"4"} position={"left"} />
-    <Button value={"5"} position={"left"} />
-    <Button value={"6"} position={"left"} />
-    <Button value={"-"} position={"right"} />
-    <Button value={"1"} position={"left"} />
-    <Button value={"2"} position={"left"} />
-    <Button value={"3"} position={"left"} />
-    <Button value={"+"} position={"right"} />
-    <Button value={"0"} cellSize={"2"} position={"left"} />
-    <Button value={","} position={"left"} />
-    <Button value={"="} position={"right"} />
+    <Button backgroundColor="gainsboro" color="black">
+      C
+    </Button>
+    <Button backgroundColor="gainsboro" color="black">
+      ±
+    </Button>
+    <Button backgroundColor="gainsboro" color="black">
+      %
+    </Button>
+    <Button backgroundColor="orange" color="white">
+      ÷
+    </Button>
+    <Button backgroundColor="gainsboro" color="black">
+      7
+    </Button>
+    <Button backgroundColor="gainsboro" color="black">
+      8
+    </Button>
+    <Button backgroundColor="gainsboro" color="black">
+      9
+    </Button>
+    <Button backgroundColor="orange" color="white">
+      ×
+    </Button>
+    <Button backgroundColor="gainsboro" color="black">
+      4
+    </Button>
+    <Button backgroundColor="gainsboro" color="black">
+      5
+    </Button>
+    <Button backgroundColor="gainsboro" color="black">
+      6
+    </Button>
+    <Button backgroundColor="orange" color="white">
+      -
+    </Button>
+    <Button backgroundColor="gainsboro" color="black">
+      1
+    </Button>
+    <Button backgroundColor="gainsboro" color="black">
+      2
+    </Button>
+    <Button backgroundColor="gainsboro" color="black">
+      3
+    </Button>
+    <Button backgroundColor="orange" color="white">
+      +
+    </Button>
+    <Button backgroundColor="gainsboro" size="large" color="black">
+      0
+    </Button>
+    <Button backgroundColor="gainsboro" color="black">
+      ,
+    </Button>
+    <Button backgroundColor="orange" color="white">
+      =
+    </Button>
   </CalculatorLayout>
 );
 
