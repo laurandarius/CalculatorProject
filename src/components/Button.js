@@ -19,7 +19,7 @@ const Button = props => (
     backgroundColor={props.backgroundColor}
     size={sizes[props.size ? "large" : "small"]}
     color={props.color}
-    onClick={props.onClick(props.value)}
+    onClick={props.onClick}
   >
     {props.children}
   </ButtonLayout>
