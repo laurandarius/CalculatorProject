@@ -19,7 +19,7 @@ const DisplayContent = styled.div`
 
 const Display = props => (
   <DisplayLayout>
-    <DisplayContent> {props.result} </DisplayContent>{" "}
+    <DisplayContent>{props.result}</DisplayContent>
   </DisplayLayout>
 );
 
