@@ -1,15 +1,4 @@
-import React, { useState } from "react";
-import Display from "./Display";
-import Button from "./Button";
-import styled from "styled-components";
-
-const CalculatorLayout = styled.div`
-  width: 233px;
-  height: 319px;
-  margin: 40px 0px 0px 40px;
-  border-radius: 9px 9px 9px 9px;
-  box-shadow: 5px 20px 40px 1px #888888;
-`;
+import { useState } from "react";
 
 const Calculator = () => {
   const [result, setResult] = useState("0");
@@ -83,39 +72,7 @@ const Calculator = () => {
     setOperation(value);
   };
 
-  return (
-    <CalculatorLayout>
-      <Display result={result} />
-      <Button
-        value={isReset ? "AC" : "C"}
-        position={"left"}
-        onClick={onResetClick}
-      />
-      <Button value={"±"} position={"left"} onClick={onUnaryOperatorClick} />
-      <Button value={"%"} position={"left"} onClick={onUnaryOperatorClick} />
-      <Button value={"÷"} position={"right"} onClick={onArithOperatorClick} />
-      <Button value={"7"} position={"left"} onClick={onNumberClick} />
-      <Button value={"8"} position={"left"} onClick={onNumberClick} />
-      <Button value={"9"} position={"left"} onClick={onNumberClick} />
-      <Button value={"×"} position={"right"} onClick={onArithOperatorClick} />
-      <Button value={"4"} position={"left"} onClick={onNumberClick} />
-      <Button value={"5"} position={"left"} onClick={onNumberClick} />
-      <Button value={"6"} position={"left"} onClick={onNumberClick} />
-      <Button value={"-"} position={"right"} onClick={onArithOperatorClick} />
-      <Button value={"1"} position={"left"} onClick={onNumberClick} />
-      <Button value={"2"} position={"left"} onClick={onNumberClick} />
-      <Button value={"3"} position={"left"} onClick={onNumberClick} />
-      <Button value={"+"} position={"right"} onClick={onArithOperatorClick} />
-      <Button
-        value={"0"}
-        cellSize={"2"}
-        position={"left"}
-        onClick={onNumberClick}
-      />
-      <Button value={","} position={"left"} onClick={onNumberClick} />
-      <Button value={"="} position={"right"} onClick={onArithOperatorClick} />
-    </CalculatorLayout>
-  );
+  return "Hello World";
 };
 
 export default Calculator;
