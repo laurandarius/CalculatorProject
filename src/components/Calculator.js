@@ -1,5 +1,6 @@
 import React from "react";
 import Button from "./Button";
+import Display from "./Display";
 import styled from "styled-components";
 
 const CalculatorLayout = styled.div`
@@ -12,6 +13,7 @@ const CalculatorLayout = styled.div`
 
 const Calculator = () => (
   <CalculatorLayout>
+    <Display result="0" />
     <Button backgroundColor="gainsboro" color="black">
       C
     </Button>
