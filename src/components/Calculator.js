@@ -83,78 +83,120 @@ const Calculator = () => {
     setOperation(value);
   };
 
+  const reset = isReset === true ? "AC" : "C";
+
   return (
     <CalculatorLayout>
       <Display result={result} />
-      <Button backgroundColor="gainsboro" color="black" onClick={onResetClick}>
-        C
+      <Button
+        backgroundColor="gainsboro"
+        color="black"
+        onClick={() => onResetClick(reset)}
+      >
+        {reset}
       </Button>
       <Button
         backgroundColor="gainsboro"
         color="black"
-        onClick={onUnaryOperatorClick}
+        onClick={() => onUnaryOperatorClick("±")}
       >
         ±
       </Button>
       <Button
         backgroundColor="gainsboro"
         color="black"
-        onClick={onUnaryOperatorClick}
+        onClick={() => onUnaryOperatorClick("%")}
       >
         %
       </Button>
       <Button
         backgroundColor="orange"
         color="white"
-        onClick={onArithOperatorClick}
+        onClick={() => onArithOperatorClick("÷")}
       >
         ÷
       </Button>
-      <Button backgroundColor="gainsboro" color="black" onClick={onNumberClick}>
+      <Button
+        backgroundColor="gainsboro"
+        color="black"
+        onClick={() => onNumberClick("7")}
+      >
         7
       </Button>
-      <Button backgroundColor="gainsboro" color="black" onClick={onNumberClick}>
+      <Button
+        backgroundColor="gainsboro"
+        color="black"
+        onClick={() => onNumberClick("8")}
+      >
         8
       </Button>
-      <Button backgroundColor="gainsboro" color="black" onClick={onNumberClick}>
+      <Button
+        backgroundColor="gainsboro"
+        color="black"
+        onClick={() => onNumberClick("9")}
+      >
         9
       </Button>
       <Button
         backgroundColor="orange"
         color="white"
-        onClick={onArithOperatorClick}
+        onClick={() => onArithOperatorClick("×")}
       >
         ×
       </Button>
-      <Button backgroundColor="gainsboro" color="black" onClick={onNumberClick}>
+      <Button
+        backgroundColor="gainsboro"
+        color="black"
+        onClick={() => onNumberClick("4")}
+      >
         4
       </Button>
-      <Button backgroundColor="gainsboro" color="black" onClick={onNumberClick}>
+      <Button
+        backgroundColor="gainsboro"
+        color="black"
+        onClick={() => onNumberClick("5")}
+      >
         5
       </Button>
-      <Button backgroundColor="gainsboro" color="black" onClick={onNumberClick}>
+      <Button
+        backgroundColor="gainsboro"
+        color="black"
+        onClick={() => onNumberClick("6")}
+      >
         6
       </Button>
       <Button
         backgroundColor="orange"
         color="white"
-        onClick={onArithOperatorClick}
+        onClick={() => onArithOperatorClick("-")}
       >
         -
       </Button>
-      <Button backgroundColor="gainsboro" color="black" onClick={onNumberClick}>
+      <Button
+        backgroundColor="gainsboro"
+        color="black"
+        onClick={() => onNumberClick("1")}
+      >
         1
       </Button>
-      <Button backgroundColor="gainsboro" color="black" onClick={onNumberClick}>
+      <Button
+        backgroundColor="gainsboro"
+        color="black"
+        onClick={() => onNumberClick("2")}
+      >
         2
       </Button>
-      <Button backgroundColor="gainsboro" color="black" onClick={onNumberClick}>
+      <Button
+        backgroundColor="gainsboro"
+        color="black"
+        onClick={() => onNumberClick("3")}
+      >
         3
       </Button>
       <Button
         backgroundColor="orange"
         color="white"
-        onClick={onArithOperatorClick}
+        onClick={() => onArithOperatorClick("+")}
       >
         +
       </Button>
@@ -162,17 +204,21 @@ const Calculator = () => {
         backgroundColor="gainsboro"
         size="large"
         color="black"
-        onClick={onNumberClick}
+        onClick={() => onNumberClick("0")}
       >
         0
       </Button>
-      <Button backgroundColor="gainsboro" color="black" onClick={onNumberClick}>
+      <Button
+        backgroundColor="gainsboro"
+        color="black"
+        onClick={() => onNumberClick(",")}
+      >
         ,
       </Button>
       <Button
         backgroundColor="orange"
         color="white"
-        onClick={onArithOperatorClick}
+        onClick={() => onArithOperatorClick("=")}
       >
         =
       </Button>
