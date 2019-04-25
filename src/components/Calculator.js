@@ -1,229 +1,157 @@
-import React, { useState } from "react";
-import Button from "./Button";
-import Display from "./Display";
-import styled from "styled-components";
+import React from "react";
+import CalculatorLook from "./CalculatorLook";
 
-const CalculatorLayout = styled.div`
-  width: 233px;
-  height: 319px;
-  margin: 40px 0px 0px 40px;
-  border-radius: 9px 9px 9px 9px;
-  box-shadow: 5px 20px 40px 1px #888888;
-`;
-
-const Calculator = () => {
-  const [result, setResult] = useState("0");
-  const [operation, setOperation] = useState("noOp");
-  const [firstOperand, setFirstOperand] = useState(0);
-  const [secondOperand, setSecondOperand] = useState(0);
-  const [isReset, setResetStatus] = useState(true);
-
-  const onResetClick = value => {
-    if (result !== "0") setResult("0");
-    if (firstOperand !== 0) setFirstOperand(0);
-    if (secondOperand !== 0) setSecondOperand(0);
-    if (operation !== "noOp") setOperation("noOp");
-    if (isReset === false) setResetStatus(true);
+class Calculator extends React.Component {
+  state = {
+    result: "0",
+    operation: "noOp",
+    firstOperand: 0,
+    secondOperand: 0,
+    isReset: true
   };
 
-  const onNumberClick = value => {
-    setResetStatus(false);
-    if (value === ",") setResult(!result.includes(".") ? result + "." : result);
-    else {
-      if (firstOperand !== 0 || result === "0.") {
-        setResult(result + value);
-        setFirstOperand(Number(result + value));
+  onResetClick = value => {
+    this.setState({
+      result: "0",
+      operation: "noOp",
+      firstOperand: 0,
+      secondOperand: 0,
+      isReset: true
+    });
+  };
+
+  onNumberClick = value => {
+    if (value === ",") {
+      console.log(this.state.result);
+      if (!this.state.result.includes("."))
+        this.setState(
+          Object.assign(this.state, {
+            result: this.state.result + ".",
+            isReset: false
+          })
+        );
+    } else {
+      if (this.state.firstOperand !== 0 || this.state.result === "0.") {
+        this.setState(
+          Object.assign(this.state, {
+            result: this.state.result + value,
+            firstOperand: Number(this.state.result + value),
+            isReset: false
+          })
+        );
       } else {
-        setResult(value);
-        setFirstOperand(Number(value));
+        this.setState(
+          Object.assign(this.state, {
+            result: value,
+            firstOperand: Number(value),
+            isReset: false
+          })
+        );
       }
     }
   };
 
-  const onUnaryOperatorClick = value => {
+  onUnaryOperatorClick = value => {
     switch (value) {
       case "%":
-        setSecondOperand(Number(result) / 100);
-        setResult((Number(result) / 100).toString());
+        this.setState(
+          Object.assign(this.state, {
+            secondOperand: Number(this.state.result) / 100,
+            result: (Number(this.state.result) / 100).toString()
+          })
+        );
         break;
       case "±":
-        setSecondOperand(-Number(result));
-        setResult((-Number(result)).toString());
+        this.setState(
+          Object.assign(this.state, {
+            secondOperand: -Number(this.state.result),
+            result: (-Number(this.state.result)).toString()
+          })
+        );
         break;
       default:
     }
-    setFirstOperand(0);
-    setOperation(value);
+
+    this.setState(
+      Object.assign(this.state, {
+        firstOperand: 0,
+        operation: value
+      })
+    );
   };
 
-  const onArithOperatorClick = value => {
-    switch (operation) {
+  onArithOperatorClick = value => {
+    switch (this.state.operation) {
       case "+":
-        setSecondOperand(secondOperand + firstOperand);
-        setResult(secondOperand + firstOperand);
+        this.setState(
+          Object.assign(this.state, {
+            secondOperand: this.state.secondOperand + this.state.firstOperand,
+            result: (
+              this.state.secondOperand + this.state.firstOperand
+            ).toString()
+          })
+        );
         break;
       case "-":
-        setSecondOperand(secondOperand - firstOperand);
-        setResult(secondOperand - firstOperand);
+        this.setState(
+          Object.assign(this.state, {
+            secondOperand: this.state.secondOperand - this.state.firstOperand,
+            result: (
+              this.state.secondOperand - this.state.firstOperand
+            ).toString()
+          })
+        );
         break;
       case "×":
-        setSecondOperand(secondOperand * firstOperand);
-        setResult(secondOperand * firstOperand);
+        this.setState(
+          Object.assign(this.state, {
+            secondOperand: this.state.secondOperand * this.state.firstOperand,
+            result: (
+              this.state.secondOperand * this.state.firstOperand
+            ).toString()
+          })
+        );
         break;
       case "÷":
-        setSecondOperand(secondOperand / firstOperand);
-        setResult(secondOperand / firstOperand);
+        this.setState(
+          Object.assign(this.state, {
+            secondOperand: this.state.secondOperand / this.state.firstOperand,
+            result: (
+              this.state.secondOperand / this.state.firstOperand
+            ).toString()
+          })
+        );
         break;
       case "noOp":
-        setSecondOperand(firstOperand);
+        this.setState(
+          Object.assign(this.state, {
+            secondOperand: this.state.firstOperand
+          })
+        );
         break;
       default:
     }
-    setFirstOperand(0);
-    setOperation(value);
+
+    this.setState(
+      Object.assign(this.state, {
+        firstOperand: 0,
+        operation: value
+      })
+    );
   };
 
-  const reset = isReset === true ? "AC" : "C";
-
-  return (
-    <CalculatorLayout>
-      <Display result={result} />
-      <Button
-        backgroundColor="gainsboro"
-        color="black"
-        onClick={() => onResetClick(reset)}
-      >
-        {reset}
-      </Button>
-      <Button
-        backgroundColor="gainsboro"
-        color="black"
-        onClick={() => onUnaryOperatorClick("±")}
-      >
-        ±
-      </Button>
-      <Button
-        backgroundColor="gainsboro"
-        color="black"
-        onClick={() => onUnaryOperatorClick("%")}
-      >
-        %
-      </Button>
-      <Button
-        backgroundColor="orange"
-        color="white"
-        onClick={() => onArithOperatorClick("÷")}
-      >
-        ÷
-      </Button>
-      <Button
-        backgroundColor="gainsboro"
-        color="black"
-        onClick={() => onNumberClick("7")}
-      >
-        7
-      </Button>
-      <Button
-        backgroundColor="gainsboro"
-        color="black"
-        onClick={() => onNumberClick("8")}
-      >
-        8
-      </Button>
-      <Button
-        backgroundColor="gainsboro"
-        color="black"
-        onClick={() => onNumberClick("9")}
-      >
-        9
-      </Button>
-      <Button
-        backgroundColor="orange"
-        color="white"
-        onClick={() => onArithOperatorClick("×")}
-      >
-        ×
-      </Button>
-      <Button
-        backgroundColor="gainsboro"
-        color="black"
-        onClick={() => onNumberClick("4")}
-      >
-        4
-      </Button>
-      <Button
-        backgroundColor="gainsboro"
-        color="black"
-        onClick={() => onNumberClick("5")}
-      >
-        5
-      </Button>
-      <Button
-        backgroundColor="gainsboro"
-        color="black"
-        onClick={() => onNumberClick("6")}
-      >
-        6
-      </Button>
-      <Button
-        backgroundColor="orange"
-        color="white"
-        onClick={() => onArithOperatorClick("-")}
-      >
-        -
-      </Button>
-      <Button
-        backgroundColor="gainsboro"
-        color="black"
-        onClick={() => onNumberClick("1")}
-      >
-        1
-      </Button>
-      <Button
-        backgroundColor="gainsboro"
-        color="black"
-        onClick={() => onNumberClick("2")}
-      >
-        2
-      </Button>
-      <Button
-        backgroundColor="gainsboro"
-        color="black"
-        onClick={() => onNumberClick("3")}
-      >
-        3
-      </Button>
-      <Button
-        backgroundColor="orange"
-        color="white"
-        onClick={() => onArithOperatorClick("+")}
-      >
-        +
-      </Button>
-      <Button
-        backgroundColor="gainsboro"
-        size="large"
-        color="black"
-        onClick={() => onNumberClick("0")}
-      >
-        0
-      </Button>
-      <Button
-        backgroundColor="gainsboro"
-        color="black"
-        onClick={() => onNumberClick(",")}
-      >
-        ,
-      </Button>
-      <Button
-        backgroundColor="orange"
-        color="white"
-        onClick={() => onArithOperatorClick("=")}
-      >
-        =
-      </Button>
-    </CalculatorLayout>
-  );
-};
+  render() {
+    return (
+      <CalculatorLook
+        reset={this.state.isReset === true ? "AC" : "C"}
+        result={this.state.result}
+        onResetClick={this.onResetClick}
+        onUnaryOperatorClick={this.onUnaryOperatorClick}
+        onArithOperatorClick={this.onArithOperatorClick}
+        onNumberClick={this.onNumberClick}
+      />
+    );
+  }
+}
 
 export default Calculator;
